@@ -1,0 +1,10 @@
+services:
+ bind:
+  container_name: bind
+  ports:
+    -  "53:53/udp"
+  command: named -c /etc/named/named.conf
+  volumes:
+    - ./bind/named.conf:/etc/named/named.conf
+    - ./bind/zone/:/var/named/master/
+  restart: always
